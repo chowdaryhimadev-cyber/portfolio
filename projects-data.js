@@ -12,6 +12,7 @@ const SYSTEMS_PROJECTS = [
     tag: "FLAGSHIP ARCHITECTURE",
     description: "Autonomous multi-agent DAG that harvests 4 academic APIs concurrently, enforces Adversarial NLI citation auditing, and streams verified research dossiers in real time.",
     githubUrl: "https://github.com/chowdaryhimadev-cyber/aletheia-researcher",
+    liveDemoUrl: "https://aletheia-researcher.onrender.com/",
     repoName: "chowdaryhimadev-cyber / aletheia-researcher",
     metrics: [
       { value: "93.4%", label: "Citation Support Rate" },

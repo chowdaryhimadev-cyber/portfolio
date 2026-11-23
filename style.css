@@ -405,6 +405,39 @@ a {
   color: #34D399;
 }
 
+.sys-header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.live-demo-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.16);
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.live-demo-pill:hover {
+  background: rgba(16, 185, 129, 0.28);
+  border-color: #10b981;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.live-demo-pill i {
+  width: 13px;
+  height: 13px;
+}
+
 .sys-repo-link {
   display: inline-flex;
   align-items: center;

@@ -90,14 +90,14 @@
         </p>
 
         <div class="hero-actions">
-          <a href="https://github.com/chowdaryhimadev-cyber/aletheia-researcher" target="_blank" class="btn-primary-pill">
-            <i data-lucide="terminal"></i>
-            <span>Inspect Aletheia Engine</span>
+          <a href="https://aletheia-researcher.onrender.com/" target="_blank" class="btn-primary-pill" title="Launch Live Aletheia Engine">
+            <span class="live-dot-pulse" style="margin-right: 4px;"></span>
+            <span>Launch Live App</span>
             <i data-lucide="arrow-up-right"></i>
           </a>
-          <a href="#projects" class="btn-secondary-pill">
-            <span>Explore All Systems</span>
-            <i data-lucide="arrow-down"></i>
+          <a href="https://github.com/chowdaryhimadev-cyber/aletheia-researcher" target="_blank" class="btn-secondary-pill" title="Inspect Source Code">
+            <i data-lucide="github"></i>
+            <span>View Architecture</span>
           </a>
         </div>
 
@@ -445,11 +445,20 @@
             <span class="live-dot-pulse"></span>
             <span class="sys-tag">${project.tag}</span>
           </div>
-          <a href="${project.githubUrl}" target="_blank" class="sys-repo-link" title="View Source on GitHub">
-            <i data-lucide="github"></i>
-            <span>${project.repoName}</span>
-            <i data-lucide="arrow-up-right"></i>
-          </a>
+          <div class="sys-header-actions">
+            ${project.liveDemoUrl ? `
+              <a href="${project.liveDemoUrl}" target="_blank" class="live-demo-pill" title="Launch Live Web App">
+                <span class="pulse-green-dot"></span>
+                <span>Live App</span>
+                <i data-lucide="external-link"></i>
+              </a>
+            ` : ''}
+            <a href="${project.githubUrl}" target="_blank" class="sys-repo-link" title="View Source on GitHub">
+              <i data-lucide="github"></i>
+              <span>${project.repoName}</span>
+              <i data-lucide="arrow-up-right"></i>
+            </a>
+          </div>
         </div>
 
         <div class="sys-title-row">
@@ -509,8 +518,8 @@
       if (!window.SYSTEMS_PROJECTS) return;
       const grid = document.getElementById('dynamicProjectsGrid');
       grid.innerHTML = window.SYSTEMS_PROJECTS.map((project, idx) => `
-        <a href="${project.githubUrl}" target="_blank" class="project-card interactive-project-card">
-          <div class="project-custom-thumb bg-slate-dark">
+        <div class="project-card interactive-project-card">
+          <a href="${project.liveDemoUrl || project.githubUrl}" target="_blank" class="project-custom-thumb bg-slate-dark">
             <div class="thumb-header-badge">
               <span class="pulse-green-dot"></span>
               <span>${project.tag}</span>
@@ -519,16 +528,24 @@
             <div class="thumb-mini-tags">
               ${project.techStack.slice(0, 3).map(t => `<span>${t}</span>`).join('')}
             </div>
-          </div>
+          </a>
           <div class="project-custom-footer">
             <span class="p-num">0${idx + 1}</span>
             <div class="p-info">
               <strong>${project.shortName}</strong>
               <span>${project.category}</span>
             </div>
-            <span class="p-arrow"><i data-lucide="arrow-up-right"></i></span>
+            <div class="p-action-links" style="display: flex; gap: 8px; align-items: center; margin-left: auto;">
+              ${project.liveDemoUrl ? `
+                <a href="${project.liveDemoUrl}" target="_blank" class="thumb-live-btn" title="Live Demo" style="padding: 4px 10px; border-radius: 999px; background: rgba(16, 185, 129, 0.15); color: #10b981; font-size: 11px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                  <span style="width: 5px; height: 5px; border-radius: 50%; background: #10b981;"></span>
+                  Demo
+                </a>
+              ` : ''}
+              <a href="${project.githubUrl}" target="_blank" class="p-arrow" title="View GitHub Repo"><i data-lucide="arrow-up-right"></i></a>
+            </div>
           </div>
-        </a>
+        </div>
       `).join('');
 
       if (window.lucide) {
